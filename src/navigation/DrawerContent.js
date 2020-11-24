@@ -90,7 +90,7 @@ export default function DrawerContent(props) {
           />
         </Drawer.Section>
         <Drawer.Section title="Channels">
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity style={styles.button} /* add an onpress here */>
             <Text style={{color: '#3F0F3F', fontWeight: 'bold', fontSize: 15}}>
               Add Channel
             </Text>
