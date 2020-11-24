@@ -1,15 +1,16 @@
 import React from 'react';
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
 
-export default function Home({navigation}) {
+export default function Settings({navigation}) {
   return (
     <View style={styles.container}>
-      <Text>This is Home Screen</Text>
+      <Text>This is Settings Screen</Text>
 
       <View style={{flexDirection: 'row'}}>
         <TouchableOpacity
           style={styles.button}
-          onPress={() => navigation.navigate('Profile')}>
+          /* onPress={() => navigation.navigate('Profile')} */
+        >
           <Text style={{color: '#3F0F3F', fontWeight: 'bold', fontSize: 15}}>
             go to profile
           </Text>

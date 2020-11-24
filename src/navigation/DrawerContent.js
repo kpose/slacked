@@ -1,9 +1,6 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import {
-  DrawerItem,
-  DrawerContentScrollView,
-} from '@react-navigation/drawer';
+import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {DrawerItem, DrawerContentScrollView} from '@react-navigation/drawer';
 import {
   useTheme,
   Avatar,
@@ -18,9 +15,10 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 export default function DrawerContent(props) {
+  const paperTheme = useTheme();
   return (
     <DrawerContentScrollView {...props}>
-      <View style = {styles.drawerContent}>
+      <View style={styles.drawerContent}>
         <View style={styles.userInfoSection}>
           <Avatar.Image
             source={{
@@ -29,55 +27,82 @@ export default function DrawerContent(props) {
             }}
             size={50}
           />
-          <Title style={styles.title}>Kpose Richard</Title>
+          <View style={{flexDirection: 'row', marginTop: 20, marginBottom: 5}}>
+            <Icon name="access-point" size={20} color="green" />
+            <Text style={styles.title}>Kpose Richard</Text>
+          </View>
+
           <Caption style={styles.caption}>@kpoose</Caption>
-          
         </View>
-        <Drawer.Section style={styles.drawerSection}>
+        <Drawer.Section>
           <DrawerItem
-            icon={({ color, size }) => (
-              <Icon
-                name="account-outline"
-                color={color}
-                size={size}
-              />
+            icon={({color, size}) => (
+              <Icon name="android-messages" color={color} size={size} />
             )}
-            label="Profile"
+            label="Threads"
             onPress={() => {}}
           />
           <DrawerItem
-            icon={({ color, size }) => (
-              <Icon name="tune" color={color} size={size} />
+            icon={({color, size}) => (
+              <Icon name="at" color={color} size={size} />
             )}
-            label="Preferences"
+            label="Mentions & Reactions"
             onPress={() => {}}
           />
           <DrawerItem
-            icon={({ color, size }) => (
-              <Icon
-                name="bookmark-outline"
-                color={color}
-                size={size}
-              />
+            icon={({color, size}) => (
+              <Icon name="archive" color={color} size={size} />
             )}
-            label="Bookmarks"
+            label="Saved Items"
+            onPress={() => {}}
+          />
+
+          <DrawerItem
+            icon={({color, size}) => (
+              <Icon name="table-search" color={color} size={size} />
+            )}
+            label="Channel browser"
+            onPress={() => {}}
+          />
+
+          <DrawerItem
+            icon={({color, size}) => (
+              <Icon name="account-multiple-check" color={color} size={size} />
+            )}
+            label="People & user groups"
+            onPress={() => {}}
+          />
+
+          <DrawerItem
+            icon={({color, size}) => (
+              <Icon name="apps" color={color} size={size} />
+            )}
+            label="Apps"
+            onPress={() => {}}
+          />
+
+          <DrawerItem
+            icon={({color, size}) => (
+              <Icon name="file-upload" color={color} size={size} />
+            )}
+            label="File Browser"
             onPress={() => {}}
           />
         </Drawer.Section>
         <Drawer.Section title="Channels">
-          <TouchableRipple onPress={() => {}}>
+          <TouchableOpacity style={styles.button}>
+            <Text style={{color: '#3F0F3F', fontWeight: 'bold', fontSize: 15}}>
+              Add Channel
+            </Text>
+          </TouchableOpacity>
+        </Drawer.Section>
+
+        <Drawer.Section title="Settings">
+          <TouchableRipple onPress={props.toggleTheme}>
             <View style={styles.preference}>
               <Text>Dark Theme</Text>
               <View pointerEvents="none">
-                <Switch value={false} />
-              </View>
-            </View>
-          </TouchableRipple>
-          <TouchableRipple onPress={() => {}}>
-            <View style={styles.preference}>
-              <Text>RTL</Text>
-              <View pointerEvents="none">
-                <Switch value={false} />
+                <Switch /* value={theme.dark} */ />
               </View>
             </View>
           </TouchableRipple>
@@ -95,8 +120,9 @@ const styles = StyleSheet.create({
     paddingLeft: 20,
   },
   title: {
-    marginTop: 20,
     fontWeight: 'bold',
+    fontSize: 18,
+    marginLeft: 5,
   },
   caption: {
     fontSize: 14,
@@ -116,13 +142,19 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     marginRight: 3,
   },
-  drawerSection: {
-    marginTop: 15,
-  },
+  /* drawerSection: {
+    marginTop: 2,
+  }, */
   preference: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     paddingVertical: 12,
     paddingHorizontal: 16,
+  },
+  button: {
+    alignItems: 'center',
+    backgroundColor: '#DDDDDD',
+    padding: 10,
+    borderRadius: 30,
   },
 });
