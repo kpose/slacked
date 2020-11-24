@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, ScrollView} from 'react-native';
 import {Button} from 'react-native-paper';
 import Channels from '../components/Channels';
 import db from '../config/Firebase';
@@ -28,11 +28,11 @@ export default function Home({navigation}) {
           Add Channel
         </Button>
       </View>
-      <View style={styles.channels}>
+      <ScrollView style={styles.channels}>
         {channels.map((channel) => (
           <Channels key={channel.id} name={channel.name} />
         ))}
-      </View>
+      </ScrollView>
     </>
   );
 }
@@ -46,7 +46,5 @@ const styles = StyleSheet.create({
   channels: {
     flex: 0.9,
     padding: 10,
-    justifyContent: 'flex-start',
-    alignItems: 'flex-start',
   },
 });
