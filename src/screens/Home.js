@@ -8,14 +8,16 @@ export default function Home({navigation}) {
   const [channels, setChannels] = useState([]);
 
   useEffect(() => {
-    db.collection('channels').onSnapshot((snapshot) =>
-      setChannels(
-        snapshot.docs.map((doc) => ({
-          id: doc.id,
-          name: doc.data().name,
-        })),
-      ),
-    );
+    db.collection('channels')
+      .orderBy('name', 'asc')
+      .onSnapshot((snapshot) =>
+        setChannels(
+          snapshot.docs.map((doc) => ({
+            id: doc.id,
+            name: doc.data().name,
+          })),
+        ),
+      );
   }, []);
 
   return (

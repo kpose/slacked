@@ -34,8 +34,8 @@ const Header = ({scene, previous, navigation}) => {
           }}>
           <MaterialCommunityIcons
             name="format-align-justify"
-            color="#40a37a"
-            size={40}
+            color="white"
+            size={25}
           />
         </TouchableOpacity>
       )}
@@ -67,7 +67,7 @@ const HomeStack = () => {
       <Stack.Screen
         name="Chat"
         component={Chat}
-        options={({route}) => ({title: route.params.channel.name})}
+        options={({route}) => ({title: `# ${route.params.channel.name}`})}
       />
       {/* add other screens here */}
     </Stack.Navigator>

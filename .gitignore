@@ -60,5 +60,6 @@ buck-out/
 
 
 # Directory
+.Firebase
 
 config/

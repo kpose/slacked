@@ -4,7 +4,7 @@ import DrawerContent from './DrawerContent';
 
 //import screens
 //import Home from '../screens/Home';
-import HomeStack from './HomeStack';
+//import HomeStack from './HomeStack';
 import BottomNavigator from './BottomNavigator';
 
 const Drawer = createDrawerNavigator();
