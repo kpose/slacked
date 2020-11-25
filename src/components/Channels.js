@@ -1,13 +1,16 @@
 import React from 'react';
 import {Surface, Text} from 'react-native-paper';
 import {View, StyleSheet, TouchableOpacity} from 'react-native';
+import {useNavigation} from '@react-navigation/native';
 
-export default function Channels({name}) {
+export default function Channels(props) {
+  const navigation = useNavigation();
   return (
     <View>
-      <TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('Chat', {channel: props})}>
         <Surface style={styles.surface}>
-          <Text style={styles.name}> # {name} </Text>
+          <Text style={styles.name}> # {props.name}</Text>
         </Surface>
       </TouchableOpacity>
     </View>

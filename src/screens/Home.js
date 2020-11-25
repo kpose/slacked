@@ -24,13 +24,15 @@ export default function Home({navigation}) {
         <Button
           icon="camera"
           mode="contained"
-          onPress={() => console.log('Pressed')}>
+          /* onPress={() => navigation.navigate('Chat')} */
+        >
           Add Channel
         </Button>
       </View>
+
       <ScrollView style={styles.channels}>
         {channels.map((channel) => (
-          <Channels key={channel.id} name={channel.name} />
+          <Channels key={channel.id} {...channel} />
         ))}
       </ScrollView>
     </>

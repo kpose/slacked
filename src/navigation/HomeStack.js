@@ -4,7 +4,7 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {Appbar, Avatar} from 'react-native-paper';
 
 import Home from '../screens/Home';
-import Profile from '../screens/Profile';
+import Chat from '../screens/Chat';
 
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
@@ -65,9 +65,9 @@ const HomeStack = () => {
       />
 
       <Stack.Screen
-        name="Profile"
-        component={Profile}
-        options={{headerTitle: 'Slack'}}
+        name="Chat"
+        component={Chat}
+        options={({route}) => ({title: route.params.channel.name})}
       />
       {/* add other screens here */}
     </Stack.Navigator>
